@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <title>Paste Code</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="一个用来代码高亮分享的站点"/>
+    <meta name="Keywords" content="代码,分享">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <link href="css.css" rel="stylesheet">
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+    <link class="code-css" rel="stylesheet" title="Default" href="lib/styles/default.css">
+    <link class="code-css" rel="alternate stylesheet" title="A 11 Y Dark" href="lib/styles/a11y-dark.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="A 11 Y Light" href="lib/styles/a11y-light.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Agate" href="lib/styles/agate.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="An Old Hope" href="lib/styles/an-old-hope.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Androidstudio" href="lib/styles/androidstudio.css"
+          disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Arduino Light" href="lib/styles/arduino-light.css"
+          disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Arta" href="lib/styles/arta.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Ascetic" href="lib/styles/ascetic.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Atom One Dark" href="lib/styles/atom-one-dark.css"
+          disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Atom One Dark Reasonable"
+          href="lib/styles/atom-one-dark-reasonable.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Atom One Light" href="lib/styles/atom-one-light.css"
+          disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Brown Paper" href="lib/styles/brown-paper.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Codepen Embed" href="lib/styles/codepen-embed.css"
+          disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Color Brewer" href="lib/styles/color-brewer.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Dark" href="lib/styles/dark.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Devibeans" href="lib/styles/devibeans.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Docco" href="lib/styles/docco.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Far" href="lib/styles/far.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Felipec" href="lib/styles/felipec.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Foundation" href="lib/styles/foundation.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Github" href="lib/styles/github.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Github Dark" href="lib/styles/github-dark.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Github Dark Dimmed"
+          href="lib/styles/github-dark-dimmed.css"
+          disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Gml" href="lib/styles/gml.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Googlecode" href="lib/styles/googlecode.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Gradient Dark" href="lib/styles/gradient-dark.css"
+          disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Gradient Light" href="lib/styles/gradient-light.css"
+          disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Grayscale" href="lib/styles/grayscale.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Hybrid" href="lib/styles/hybrid.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Idea" href="lib/styles/idea.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Intellij Light" href="lib/styles/intellij-light.css"
+          disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Ir Black" href="lib/styles/ir-black.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Isbl Editor Dark" href="lib/styles/isbl-editor-dark.css"
+          disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Isbl Editor Light" href="lib/styles/isbl-editor-light.css"
+          disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Kimbie Dark" href="lib/styles/kimbie-dark.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Kimbie Light" href="lib/styles/kimbie-light.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Lightfair" href="lib/styles/lightfair.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Lioshi" href="lib/styles/lioshi.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Magula" href="lib/styles/magula.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Mono Blue" href="lib/styles/mono-blue.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Monokai" href="lib/styles/monokai.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Monokai Sublime" href="lib/styles/monokai-sublime.css"
+          disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Night Owl" href="lib/styles/night-owl.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Nnfx Dark" href="lib/styles/nnfx-dark.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Nnfx Light" href="lib/styles/nnfx-light.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Nord" href="lib/styles/nord.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Obsidian" href="lib/styles/obsidian.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Paraiso Dark" href="lib/styles/paraiso-dark.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Paraiso Light" href="lib/styles/paraiso-light.css"
+          disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Pojoaque" href="lib/styles/pojoaque.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Purebasic" href="lib/styles/purebasic.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Qtcreator Dark" href="lib/styles/qtcreator-dark.css"
+          disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Qtcreator Light" href="lib/styles/qtcreator-light.css"
+          disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Rainbow" href="lib/styles/rainbow.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Routeros" href="lib/styles/routeros.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="School Book" href="lib/styles/school-book.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Shades Of Purple" href="lib/styles/shades-of-purple.css"
+          disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Srcery" href="lib/styles/srcery.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Stackoverflow Dark"
+          href="lib/styles/stackoverflow-dark.css"
+          disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Stackoverflow Light"
+          href="lib/styles/stackoverflow-light.css"
+          disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Sunburst" href="lib/styles/sunburst.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Tokyo Night Dark" href="lib/styles/tokyo-night-dark.css"
+          disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Tokyo Night Light" href="lib/styles/tokyo-night-light.css"
+          disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Tomorrow Night Blue"
+          href="lib/styles/tomorrow-night-blue.css"
+          disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Tomorrow Night Bright"
+          href="lib/styles/tomorrow-night-bright.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Vs" href="lib/styles/vs.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Vs 2015" href="lib/styles/vs2015.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Xcode" href="lib/styles/xcode.css" disabled>
+    <link class="code-css" rel="alternate stylesheet" title="Xt 256" href="lib/styles/xt256.css" disabled>
+</head>
+
+<script src="lib/highlight.min.js"></script>
+<script src="lib/highlightjs-line-numbers.min.js"></script>
+<script src="lib/axios.min.js"></script>
+<script src="js/properties/language.js"></script>
+<script src="js/properties/baseUrl.js"></script>
+<script src="js/properties/properties.js"></script>
+<script src="js/objects.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/script.js"></script>
+
+<body>
+<div>
+    <a id="title" title="首页">Paste Code</a>
+    <a>by sleepybear</a>
+    <a>| 一个用来代码高亮分享的站点</a>
+</div>
+
+<label for="code-input"></label>
+<textarea id="code-input" placeholder="请在此输入内容" style="width: 80%; height: 200px"></textarea>
+
+<div>
+    <label for="code-style-select">样式</label>
+    <select id="code-style-select" onchange="selectCodeStyle(this.value)"></select>
+
+    <label for="code-language-select">语言</label>
+    <select id="code-language-select" onchange="formatCode()"></select>
+
+    <div>
+        <button id="format" onclick="formatCode()">格式化</button>
+        <button id="paste" onclick="paste()">生成链接</button>
+        <p><a id="paste-url">　</a></p>
+    </div>
+</div>
+
+<hr>
+<div>
+    <pre>
+        <code id="code" class="language-plaintext"></code>
+    </pre>
+</div>
+</body>
+<script src="js/afterInit.js"></script>
+</html>
