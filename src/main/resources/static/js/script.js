@@ -41,7 +41,9 @@ function formatCode() {
         hljs.lineNumbersBlock(el);
         disablePasteButton(false);
         callbackCodeLanguage();
-        displayTime();
+        if (pasteButton.style.display !== "none" && !pasteButton.disabled) {
+            displayTime();
+        }
     });
 }
 

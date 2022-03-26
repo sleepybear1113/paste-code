@@ -4,6 +4,9 @@ spring:
     username: paste_code
     password: pc12345678
     driver-class-name: com.mysql.cj.jdbc.Driver
+    dbcp2:
+      validation-query: SELECT * FROM code WHERE id = 1
+      test-on-borrow: true
 
 server:
   port: 24517
