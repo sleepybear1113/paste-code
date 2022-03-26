@@ -1,6 +1,6 @@
 package com.xjx.pastecode.logic;
 
-import com.xjx.pastecode.entity.Code;
+import com.xjx.pastecode.dto.CodeDto;
 import com.xjx.pastecode.param.PasteCodeParam;
 import com.xjx.pastecode.service.CodeService;
 import com.xjx.pastecode.vo.PasteCodeVo;
@@ -21,12 +21,12 @@ public class PasteCodeLogic {
     public String insert(PasteCodeParam pasteCodeParam, Long userId) {
         PasteCodeParam.valid(pasteCodeParam);
 
-        Code code = new Code();
-        code.setCode(pasteCodeParam.getCode());
-        code.setLanguage(pasteCodeParam.getLanguage());
-        code.setStyle(pasteCodeParam.getStyle());
-        code.setUserId(userId);
-        return PasteCodeVo.encryptId(codeService.insert(code));
+        CodeDto codeDto = new CodeDto();
+        codeDto.setCode(pasteCodeParam.getCode());
+        codeDto.setLanguage(pasteCodeParam.getLanguage());
+        codeDto.setStyle(pasteCodeParam.getStyle());
+        codeDto.setUserId(userId);
+        return PasteCodeVo.encryptId(codeService.insert(codeDto));
     }
 
     public PasteCodeVo getByEid(String eid) {
@@ -35,8 +35,8 @@ public class PasteCodeLogic {
             return null;
         }
 
-        Code code = codeService.get(id);
-        PasteCodeVo pasteCodeVo = PasteCodeVo.fillByCode(code);
+        CodeDto codeDto = codeService.get(id);
+        PasteCodeVo pasteCodeVo = PasteCodeVo.fillByCode(codeDto);
         pasteCodeVo.encrypt();
         return pasteCodeVo;
     }
@@ -45,8 +45,8 @@ public class PasteCodeLogic {
         if (id == null) {
             return null;
         }
-        Code code = codeService.get(id);
-        PasteCodeVo pasteCodeVo = PasteCodeVo.fillByCode(code);
+        CodeDto codeDto = codeService.get(id);
+        PasteCodeVo pasteCodeVo = PasteCodeVo.fillByCode(codeDto);
         pasteCodeVo.encrypt();
         pasteCodeVo.decrypt();
         return pasteCodeVo;

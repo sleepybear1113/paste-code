@@ -2,15 +2,20 @@
 document.getElementById("title").setAttribute("href", homepage);
 
 // 初始化代码风格的下拉框
-let codeStyleSelect = document.getElementById("code-style-select");
 document.querySelectorAll(".code-css").forEach((e) => {
-    codeStyleSelect.add(optionElement(e.getAttribute("title")));
+    let attribute = e.getAttribute("title");
+    codeStyleSelect.add(optionElement(attribute, attribute));
 });
 
 // 初始化格式化语言的下拉框
-let codeLanguageSelect = document.getElementById("code-language-select");
+let languages = hljs.listLanguages();
+let plaintext = "plaintext";
+codeLanguageSelect.add(optionElement("", "自动检测"));
+codeLanguageSelect.add(optionElement(plaintext, "纯文本"));
 languages.forEach((language) => {
-    codeLanguageSelect.add(optionElement(language));
+    if (language !== plaintext) {
+        codeLanguageSelect.add(optionElement(language, hljs.getLanguage(language).name));
+    }
 });
 
 /**
@@ -29,11 +34,12 @@ function initPasteCode() {
         if (pasteCode == null || pasteCode.code == null || pasteCode.code.length === 0) {
             return;
         }
-        document.getElementById("paste").style.display = "none";
-        document.getElementById("code-input").value = pasteCode.code;
-        document.getElementById("code-language-select").value = pasteCode.language;
-        document.getElementById("code-style-select").value = pasteCode.style;
-        document.getElementById("code-input").readOnly = true;
+        pasteButton.style.display = "none";
+        codeInput.value = pasteCode.code;
+        codeLanguageSelect.value = pasteCode.language;
+        codeStyleSelect.value = pasteCode.style;
+        displayTime(pasteCode.modifyTime);
+        codeInput.readOnly = true;
         selectCodeStyle(pasteCode.style);
         formatCode();
         setPasteUrl(pasteCode.eid);

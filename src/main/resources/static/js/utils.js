@@ -1,5 +1,14 @@
 let homepage = window.location.origin + window.location.pathname;
 
+// 公共 element 抽取
+let codeLanguageSelect = document.getElementById("code-language-select");
+let codeStyleSelect = document.getElementById("code-style-select");
+let codeView = document.getElementById("code-view");
+let codeInput = document.getElementById("code-input");
+let pasteButton = document.getElementById("paste-button");
+let pasteUrlText = document.getElementById("paste-url");
+let pasteTimeText = document.getElementById("paste-time");
+
 /**
  * 获取 url 后面的参数
  * @returns {{obj}}
@@ -23,9 +32,18 @@ function getSearchObj() {
     return obj;
 }
 
-function optionElement(attr) {
+function optionElement(lang, languageName) {
     let optionElement = document.createElement("option");
-    optionElement.text = attr;
-    optionElement.value = attr;
+    optionElement.value = lang;
+    optionElement.text = languageName;
     return optionElement;
+}
+
+function displayTime(timestamp) {
+    if (timestamp == null) {
+        pasteTimeText.innerText = "";
+        return;
+    }
+
+    pasteTimeText.innerText = new Date(parseInt(timestamp)).toLocaleString();
 }

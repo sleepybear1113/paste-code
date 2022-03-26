@@ -1,8 +1,10 @@
 package com.xjx.pastecode.service;
 
+import com.xjx.pastecode.dto.CodeDto;
 import com.xjx.pastecode.entity.Code;
 import com.xjx.pastecode.mapper.CodeMapper;
 import jakarta.annotation.Resource;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,16 +18,24 @@ public class CodeService {
     @Resource
     private CodeMapper codeMapper;
 
-    public Long insert(Code code) {
+    public Long insert(CodeDto codeDto) {
+        if (codeDto == null) {
+            return null;
+        }
+        Code code = new Code();
+        BeanUtils.copyProperties(codeDto, code);
         code.fillAllTime();
         codeMapper.insert(code);
         return code.getId();
     }
 
-    public Code get(Long id) {
+    public CodeDto get(Long id) {
         if (id == null) {
             return null;
         }
-        return codeMapper.selectById(id);
+        Code code = codeMapper.selectById(id);
+        CodeDto codeDto = new CodeDto();
+        BeanUtils.copyProperties(code, codeDto);
+        return codeDto;
     }
 }

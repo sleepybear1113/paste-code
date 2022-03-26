@@ -5,6 +5,8 @@ class PasteCode {
         }
 
         this.id = props.id;
+        this.createTime = props.createTime;
+        this.modifyTime = props.modifyTime;
         this.eid = props.eid;
         this.userId = props.userId;
         this.style = props.style;

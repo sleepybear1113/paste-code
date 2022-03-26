@@ -12,11 +12,22 @@ function selectCodeStyle(value) {
  * 选择代码语言
  */
 function changeLanguage() {
-    let language = document.getElementById("code-language-select").value;
-    let code = document.getElementById("code");
-    code.removeAttribute("class");
-    code.classList.add("language-" + language.toLowerCase());
-    code.classList.add("hljs");
+    codeView.removeAttribute("class");
+    let language = codeLanguageSelect.value;
+    if (language === "") {
+        return;
+    }
+    codeView.classList.add("language-" + language.toLowerCase());
+    codeView.classList.add("hljs");
+}
+
+function clearLanguage() {
+    codeLanguageSelect.selectedIndex = 0;
+}
+
+function autoFormat() {
+    clearLanguage();
+    formatCode();
 }
 
 /**
@@ -25,11 +36,42 @@ function changeLanguage() {
 function formatCode() {
     changeLanguage();
     document.querySelectorAll('pre code').forEach((el) => {
-        el.innerHTML = htmlDecode(document.getElementById("code-input").value);
+        el.innerHTML = htmlDecode(codeInput.value);
         hljs.highlightElement(el);
         hljs.lineNumbersBlock(el);
         disablePasteButton(false);
+        callbackCodeLanguage();
+        displayTime();
     });
+}
+
+/**
+ * 格式化代码之后，从 code 处获取代码语言回填到下拉框中
+ */
+function callbackCodeLanguage() {
+    let classList = codeView.classList;
+    let currentLanguage = null;
+    for (let i = 0; i < classList.length; i++) {
+        let item = classList[i];
+        let searchString = "language-";
+        if (item.startsWith(searchString) && item.length > searchString.length) {
+            currentLanguage = item.replace(searchString, "");
+        }
+    }
+    if (currentLanguage == null) {
+        return;
+    }
+    if (currentLanguage === "undefined") {
+        codeLanguageSelect.selectedIndex = 1;
+    } else {
+        for (let i = 0; i < codeLanguageSelect.options.length; i++) {
+            let option = codeLanguageSelect.options[i];
+            if (option.value === currentLanguage) {
+                option.selected = true;
+                break;
+            }
+        }
+    }
 }
 
 /**
@@ -49,8 +91,8 @@ function htmlDecode(str) {
 /**
  * 将内容保存到服务器
  */
-function paste() {
-    let code = document.getElementById("code-input").value;
+function pasteCode() {
+    let code = codeInput.value;
     if (code.length === 0) {
         alert("内容为空");
         return;
@@ -60,22 +102,22 @@ function paste() {
 
     disablePasteButton(true);
 
-    let language = document.getElementById("code-language-select").value;
-    let style = document.getElementById("code-style-select").value;
-
+    let language = codeLanguageSelect.value;
+    let style = codeStyleSelect.value;
     let data = {code, language, style};
 
     let url = "paste";
     axios.post(url, data).then(res => {
         let pasteCode = new PasteCode(res.data.result);
         setPasteUrl(pasteCode.eid);
+        displayTime(new Date().getTime());
     });
 }
 
 function disablePasteButton(b) {
-    document.getElementById("paste").disabled = (b === true);
+    pasteButton.disabled = (b === true);
 }
 
 function setPasteUrl(eid) {
-    document.getElementById("paste-url").innerText = homepage + "?eid=" + eid;
+    pasteUrlText.innerText = homepage + "?eid=" + eid;
 }

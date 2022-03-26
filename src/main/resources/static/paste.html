@@ -111,16 +111,14 @@
 <script src="lib/highlight.min.js"></script>
 <script src="lib/highlightjs-line-numbers.min.js"></script>
 <script src="lib/axios.min.js"></script>
-<script src="js/properties/language.js"></script>
 <script src="js/properties/baseUrl.js"></script>
 <script src="js/properties/properties.js"></script>
 <script src="js/objects.js"></script>
-<script src="js/utils.js"></script>
-<script src="js/script.js"></script>
+
 
 <body>
 <div>
-    <a id="title" title="首页">Paste Code</a>
+    <a id="title" class="no-text-decoration" title="首页">Paste Code</a>
     <a>by sleepybear</a>
     <a>| 一个用来代码高亮分享的站点</a>
 </div>
@@ -135,19 +133,23 @@
     <label for="code-language-select">语言</label>
     <select id="code-language-select" onchange="formatCode()"></select>
 
+    <button id="auto-format-button" onclick="autoFormat()">自动检测</button>
+    <button id="format-button" onclick="formatCode()">仅格式化</button>
+    <button id="paste-button" onclick="pasteCode()">生成链接</button>
+    <a id="paste-time" class="no-text-decoration"></a>
     <div>
-        <button id="format" onclick="formatCode()">格式化</button>
-        <button id="paste" onclick="paste()">生成链接</button>
-        <p><a id="paste-url">　</a></p>
+        <p><a id="paste-url" class="no-text-decoration">　</a></p>
     </div>
 </div>
 
 <hr>
 <div>
     <pre>
-        <code id="code" class="language-plaintext"></code>
+        <code id="code-view" class=""></code>
     </pre>
 </div>
 </body>
+<script src="js/utils.js"></script>
+<script src="js/script.js"></script>
 <script src="js/afterInit.js"></script>
 </html>

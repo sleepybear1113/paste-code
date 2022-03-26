@@ -1,8 +1,9 @@
 package com.xjx.pastecode.vo;
 
-import com.xjx.pastecode.entity.Code;
+import com.xjx.pastecode.dto.CodeDto;
 import com.xjx.pastecode.utils.Encryption;
 import lombok.Data;
+import org.springframework.beans.BeanUtils;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -21,6 +22,8 @@ public class PasteCodeVo implements Serializable {
     private static final Encryption ENCRYPTION = new Encryption(4507L, 1933L, 34);
 
     private Long id;
+    private Long createTime;
+    private Long modifyTime;
 
     /**
      * encrypted id，对 id 加密后的 eid
@@ -48,16 +51,12 @@ public class PasteCodeVo implements Serializable {
         return ENCRYPTION.decryptEid(eid);
     }
 
-    public static PasteCodeVo fillByCode(Code code) {
+    public static PasteCodeVo fillByCode(CodeDto codeDto) {
         PasteCodeVo pasteCodeVo = new PasteCodeVo();
-        if (code == null) {
+        if (codeDto == null) {
             return pasteCodeVo;
         }
-        pasteCodeVo.setCode(code.getCode());
-        pasteCodeVo.setLanguage(code.getLanguage());
-        pasteCodeVo.setStyle(code.getStyle());
-        pasteCodeVo.setUserId(code.getUserId());
-        pasteCodeVo.setId(code.getId());
+        BeanUtils.copyProperties(codeDto, pasteCodeVo);
         return pasteCodeVo;
     }
 }
