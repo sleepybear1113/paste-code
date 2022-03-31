@@ -34,6 +34,9 @@ public class CodeService {
             return null;
         }
         Code code = codeMapper.selectById(id);
+        if (code == null) {
+            return null;
+        }
         CodeDto codeDto = new CodeDto();
         BeanUtils.copyProperties(code, codeDto);
         return codeDto;

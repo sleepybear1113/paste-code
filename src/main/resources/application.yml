@@ -10,3 +10,7 @@ spring:
 
 server:
   port: 24517
+
+const:
+  admin:
+    key: 1113
