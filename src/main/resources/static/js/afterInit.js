@@ -28,7 +28,7 @@ function initPasteCode() {
         return;
     }
 
-    let url = "get";
+    let url = "/get";
     axios.get(url, {params: searchObj}).then((res) => {
         let pasteCode = new PasteCode(res.data.result);
         if (pasteCode == null || pasteCode.code == null || pasteCode.code.length === 0) {

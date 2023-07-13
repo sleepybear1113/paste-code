@@ -108,7 +108,7 @@ function pasteCode() {
     let style = codeStyleSelect.value;
     let data = {code, language, style};
 
-    let url = "paste";
+    let url = "/paste";
     axios.post(url, data).then(res => {
         let pasteCode = new PasteCode(res.data.result);
         setPasteUrl(pasteCode.eid);

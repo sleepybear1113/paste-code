@@ -10,6 +10,8 @@ spring:
 
 server:
   port: 24517
+  compression:
+    enabled: true
 
 const:
   admin:

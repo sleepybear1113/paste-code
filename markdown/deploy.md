@@ -74,3 +74,19 @@ nohup java -jar paste-code-最新版本号.jar --spring.profiles.active=dev &
 前后端分离的好处就是，前端工程能自顾自启动，不依赖于后端工程。当后端工程挂了，前端也能进行粘贴代码进行高亮显示，但是不能保存到数据库生成 URL 地址。
 
 将 `src/resources/static` 文件夹下的文件复制出来，通过 Nginx 暴露出去，同时修改 `src/main/resources/static/js/properties/properties.js` 的请求路径，根据 Nginx 不同配置不同的 base URL 地址即可。
+
+Nginx 的配置可以参考如下
+```nginx
+location ^~ /code {
+    # 静态文件路径
+    alias /home/paste-code/static/;
+    index paste.html;
+}
+
+location ^~ /api24517 {
+    proxy_pass http://127.0.0.1:24517;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+}
+```

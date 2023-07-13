@@ -1,2 +1,1 @@
-// axios.defaults.baseURL = "/api/code/";
-axios.defaults.baseURL = "";
+axios.defaults.baseURL = "/api24517";

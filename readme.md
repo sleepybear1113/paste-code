@@ -6,7 +6,7 @@
 ![首页图片](folder/imgs/homepage.png)
 # 工具简介
 ## 后端
-基于 `Spring Boot 3.0.0-M2` 的 `Java 17` 构建。使用 `MySQL` 作为存储代码的数据库，并使用 `MyBatis plus` 来连接。
+基于 `Spring Boot 3.x` 的 `Java 17` 构建。使用 `MySQL` 作为存储代码的数据库，并使用 `MyBatis plus` 来连接。
 ## 前端
 使用 [highlight.js](https://github.com/highlightjs/highlight.js) 来实现代码高亮。
 
@@ -22,6 +22,10 @@
 ## 后续方向
 后续如果再闲着没事，那么佛系更新，考虑加入过期时间、用户功能等，但是目前没有精力搞这些，只是想着能用就行。
 # 版本功能
+## v0.1.3 - 2023.07.13
+- [升级] 升级 Spring Boot 版本至 3.1.1
+- [新增] 记录 ip
+- [修改] 修改包名为 cn.sleepybear.pastecode
 ## v0.1.3
 - [升级] 升级 Spring Boot 版本至 3.0.0-M2
 - [新增] logback 配置文件
