@@ -5,6 +5,7 @@ let codeLanguageSelect = document.getElementById("code-language-select");
 let codeStyleSelect = document.getElementById("code-style-select");
 let codeView = document.getElementById("code-view");
 let codeInput = document.getElementById("code-input");
+let adminKeyInput = document.getElementById("admin-key");
 let pasteButton = document.getElementById("paste-button");
 let pasteUrlText = document.getElementById("paste-url");
 let pasteTimeText = document.getElementById("paste-time");

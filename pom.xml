@@ -10,7 +10,7 @@
     </parent>
     <groupId>cn.sleepybear</groupId>
     <artifactId>paste-code</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <name>paste-code</name>
     <description>a tool to paste code with highlight</description>
     <properties>

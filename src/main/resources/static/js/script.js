@@ -106,7 +106,9 @@ function pasteCode() {
 
     let language = codeLanguageSelect.value;
     let style = codeStyleSelect.value;
-    let data = {code, language, style};
+    let adminKey = adminKeyInput.value;
+
+    let data = {code, language, style, adminKey};
 
     let url = "/paste";
     axios.post(url, data).then(res => {

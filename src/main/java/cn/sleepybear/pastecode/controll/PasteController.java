@@ -1,6 +1,7 @@
 package cn.sleepybear.pastecode.controll;
 
 import cn.sleepybear.pastecode.constants.Constant;
+import cn.sleepybear.pastecode.exception.FrontException;
 import cn.sleepybear.pastecode.logic.PasteCodeLogic;
 import cn.sleepybear.pastecode.param.PasteCodeParam;
 import cn.sleepybear.pastecode.vo.PasteCodeVo;
@@ -22,6 +23,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class PasteController {
     @Value("${const.admin.key:}")
     private String adminKey;
+    @Value("${max-length:2000000}")
+    private Long maxLength;
 
     @Resource
     private PasteCodeLogic pasteCodeLogic;
@@ -29,6 +32,20 @@ public class PasteController {
     @RequestMapping("/paste")
     public PasteCodeVo paste(@RequestBody PasteCodeParam pasteCodeParam) {
         PasteCodeVo pasteCodeVo = new PasteCodeVo();
+        if (pasteCodeParam == null) {
+            throw new FrontException("body 不能为空");
+        }
+        String code = pasteCodeParam.getCode();
+        if (StringUtils.isBlank(code)) {
+            throw new FrontException("代码不能为空");
+        }
+
+        if (StringUtils.isBlank(adminKey) || !adminKey.equals(pasteCodeParam.getAdminKey())) {
+            if (code.length() > maxLength) {
+                throw new FrontException("代码过长！长度%s，限制%s".formatted(code.length(), maxLength));
+            }
+        }
+
         pasteCodeVo.setEid(pasteCodeLogic.insert(pasteCodeParam, null));
         return pasteCodeVo;
     }

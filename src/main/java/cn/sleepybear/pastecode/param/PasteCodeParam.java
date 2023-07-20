@@ -25,6 +25,7 @@ public class PasteCodeParam implements Serializable {
     private String code;
     private String style;
     private String language;
+    private String adminKey;
 
     public static void valid(PasteCodeParam pasteCodeParam) {
         if (pasteCodeParam == null) {
